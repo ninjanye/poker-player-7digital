@@ -61,7 +61,7 @@ module.exports = {
                     "suit": "hearts"                // Suit of the card. Possible values are: clubs,spades,hearts,diamonds
                 },
                 {
-                    "rank": "K",
+                    "rank": "9",
                     "suit": "spades"
                 }
             ]
