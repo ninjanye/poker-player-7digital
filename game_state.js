@@ -12,7 +12,7 @@ module.exports = {
     "small_blind": 10,                              // The small blind in the current round. The big blind is twice the
                                                     //     small blind
 
-    "current_buy_in": 320,                          // The amount of the largest current bet from any one player
+    "current_buy_in": 300,                          // The amount of the largest current bet from any one player
 
     "pot": 400,                                     // The size of the pot (sum of the player bets)
 
@@ -52,7 +52,7 @@ module.exports = {
             "name": "Bob",
             "status": "active",
             "version": "Default random player",
-            "stack": 1590,
+            "stack": 10000,
             "bet": 80,
             "hole_cards": [                         // The cards of the player. This is only visible for your own player
                                                     //     except after showdown, when cards revealed are also included.

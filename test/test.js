@@ -66,6 +66,8 @@ describe("when I have a pair", function(){
 
 describe("when I have matching suits", function(){
   it("calls", function(done){
+    gameState.current_buy_in = 40;
+    gameState.players[1].stack = 1000
     gameState.players[1].hole_cards = [
       {"rank": "2","suit": "hearts"},
       {"rank": "4","suit": "hearts"}];
@@ -76,6 +78,8 @@ describe("when I have matching suits", function(){
   });
 
   it("raises on high suits", function(done){
+    gameState.current_buy_in = 40;
+    gameState.players[1].stack = 1000
     gameState.players[1].hole_cards = [
       {"rank": "J","suit": "hearts"},
       {"rank": "4","suit": "hearts"}];

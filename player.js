@@ -23,6 +23,7 @@ module.exports = {
       return bet(999999);
     }
     if (isSuited && hasHighCard) {
+      //Check against the flop and only bet if we have something
       return bet(game_state.minimum_raise);
     }
 
@@ -34,6 +35,8 @@ module.exports = {
     }
 
     if (isSuited) {
+      console.log('**********');
+      console.log((current_buy_in / stack));
       if ((current_buy_in / stack) > 0.3) {
         return bet(0);
       }

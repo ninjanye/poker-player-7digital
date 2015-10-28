@@ -3,6 +3,7 @@
 * If pot is low, only play on pair or greater
 * consider the flop --> use ranking api
 * if we are bb --> check fold
+* if we are small blind and only 1 person playing ---> go all in
 * How much money does the opposition have... base decision on that
 * if we are being put all in.... only bet if we have a v.good hand
 * bluffing.... ?
