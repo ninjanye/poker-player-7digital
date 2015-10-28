@@ -6,8 +6,9 @@ module.exports = {
   VERSION: "the eagle has landed",
 
   bet_request: function(game_state, bet) {
-    var current_buy_in = game_state.current_buy_in;
-    console.log("Current buy in is " + current_buy_in);
+    try {
+        var current_buy_in = game_state.current_buy_in;
+        console.log("Current buy in is " + current_buy_in);
 
     var index = game_state.in_action;
     var cards = game_state.players[index].hole_cards;
@@ -33,8 +34,10 @@ module.exports = {
 
 
     return bet(0);
+    } catch (err) {
+        return bet(0);
+    }
   },
-
   showdown: function(game_state) {
 
   }
