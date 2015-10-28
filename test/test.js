@@ -47,4 +47,16 @@ describe("when I have a pair", function(){
       done();
     })
   });
-})
+});
+
+describe("when I have matching suits", function(){
+  it("calls", function(done){
+    gameState.players[1].hole_cards = [
+      {"rank": "2","suit": "hearts"},
+      {"rank": "4","suit": "hearts"}];
+    player.bet_request(gameState, function(bet){
+      assert.equal(bet, gameState.current_buy_in);
+      done();
+    })
+  });
+});

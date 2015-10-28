@@ -15,10 +15,14 @@ module.exports = {
     var hasHighCard = highCards.some((value) => {return cardValues.indexOf(value) > -1});
     var isPair = cardValues[0] === cardValues[1];
     var isHighPair = isPair &&  pairHighCards.indexOf(cardValues[0]) > -1;
+    var isSuited = cards[0].suit === cards[1].suit;
     console.log('has high card: ' + hasHighCard);
 
     if (isHighPair) {
       return bet(999999);
+    }
+    if (isSuited) {
+      return bet(current_buy_in);
     }
     if (hasHighCard) {
       return bet(current_buy_in);
