@@ -9,7 +9,12 @@ module.exports = function (cards) {
        return acc;
     }, {});
     var hasPair = Object.keys(tally).some((x)=> tally[x] === 2);
+    var hasThreeOfAKind = Object.keys(tally).some((x)=> tally[x] === 3);
     console.log(tally);
+    if(hasThreeOfAKind) {
+        return 2;
+    }
+
     if (hasPair) {
         return 1;
     }

@@ -13,4 +13,9 @@ describe('handAnalyser', () => {
         var bestHand = handAnalyser(cards);
         assert.equal(1, bestHand);
     });
+    it('returns 2 if three of a kind', () => {
+        var cards = [{rank: 2}, {rank: 2}, {rank: 2}];
+        var bestHand = handAnalyser(cards);
+        assert.equal(2, bestHand);
+    });
 });
