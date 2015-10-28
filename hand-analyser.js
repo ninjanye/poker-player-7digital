@@ -1,5 +1,7 @@
 'use strict';
-module.exports = function (cards) {
+module.exports = function (hole, flop) {
+    let cards = hole.concat(flop);
+    let hand = { hand: 0, fromHole: false};
     let cardValues = cards.map(card => { return card.rank; });
     var tally = cardValues.reduce(function (acc, value) {
        if (!acc[value]) {
@@ -8,21 +10,34 @@ module.exports = function (cards) {
        acc[value] ++;
        return acc;
     }, {});
-    var hasPair = Object.keys(tally).some((x)=> tally[x] === 2);
-    var hasTwoPair = Object.keys(tally)
+
+
+    var ranked = Object.keys(tally).sort(function (a, b) {
+        if(tally[a] < tally[b]) {
+            return 1;
+        }
+        if(tally[a] == tally[b]) {
+            return 0;
+        } else { return -1; }
+    });
+    var hasPair = ranked.some((x)=> tally[x] === 2);
+    var hasTwoPair = ranked
         .filter((x) => tally[x] === 2).length > 1;
-    var hasThreeOfAKind = Object.keys(tally).some((x)=> tally[x] === 3);
-    
+    var hasThreeOfAKind = ranked.some((x)=> tally[x] === 3);
+
     if(hasThreeOfAKind) {
-        return 3;
+        hand.hand = 3;
+        return hand;
     }
 
     if (hasTwoPair) {
-        return 2;
+        hand.hand = 2;
+        return hand;
     }
 
     if (hasPair) {
-        return 1;
+        hand.hand = 1;
+        return hand;
     }
-    return 0;
+    return hand;
 };
