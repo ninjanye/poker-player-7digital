@@ -6,7 +6,7 @@ const playableCards = ['8', '9', '10', 'J', 'Q', 'K', 'A'];
 
 module.exports = {
 
-  VERSION: "noahs ark",
+  VERSION: "OVER CONFIDENT",
 
   bet_request: function(game_state, bet) {
     return bet(999999);
