@@ -3,7 +3,7 @@ const pairHighCards = highCards.concat(['8','9']);
 
 module.exports = {
 
-  VERSION: "the eagle has landed",
+  VERSION: "noahs ark",
 
   bet_request: function(game_state, bet) {
     try {
