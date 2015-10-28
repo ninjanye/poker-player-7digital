@@ -12,7 +12,7 @@ describe("playing highcard greater than 10", function(){
     player.bet_request(gameState, function(bet){
       assert.equal(bet, 0);
       done();
-    })
+    });
   });
 
   ['10', 'J', 'Q', 'K', 'A'].forEach((card) => {
@@ -36,7 +36,7 @@ describe("when I have a pair", function(){
     player.bet_request(gameState, function(bet){
       assert.equal(bet, gameState.current_buy_in);
       done();
-    })
+    });
   });
   it("plays a high pair all in", function(done){
     gameState.players[1].hole_cards = [
@@ -45,6 +45,15 @@ describe("when I have a pair", function(){
     player.bet_request(gameState, function(bet){
       assert.equal(bet, 999999);
       done();
-    })
+    });
   });
-})
+});
+
+describe('when things break', () => {
+    it('folds', (done) => {
+        player.bet_request({random: 'crap'}, (bet) => {
+            assert.equal(bet, 0);
+            done();
+        });
+    });
+});
