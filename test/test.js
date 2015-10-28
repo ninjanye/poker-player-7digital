@@ -59,6 +59,16 @@ describe("when I have matching suits", function(){
       done();
     })
   });
+
+  it("raises on high suits", function(done){
+    gameState.players[1].hole_cards = [
+      {"rank": "J","suit": "hearts"},
+      {"rank": "4","suit": "hearts"}];
+    player.bet_request(gameState, function(bet){
+      assert.equal(bet, gameState.minimum_raise);
+      done();
+    })
+  });
 });
 
 describe('when things break', () => {

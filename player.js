@@ -22,6 +22,10 @@ module.exports = {
     if (isHighPair) {
       return bet(999999);
     }
+    if (isSuited && hasHighCard) {
+      return bet(game_state.minimum_raise);
+    }
+
     if (isSuited) {
       return bet(current_buy_in);
     }
