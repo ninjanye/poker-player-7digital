@@ -11,7 +11,7 @@
     "chai": "^3.4.0",
     "mocha": "^2.3.3"
   },
-  "script": {
-    "test": "mocha --recursive --reporter test"
+  "scripts": {
+    "test": "./node_modules/.bin/mocha test"
   }
 }
