@@ -20,24 +20,39 @@ module.exports = function (hole, flop) {
             return 0;
         } else { return -1; }
     });
-    var hasPair = ranked.some((x)=> tally[x] === 2);
-    var hasTwoPair = ranked
-        .filter((x) => tally[x] === 2).length > 1;
-    var hasThreeOfAKind = ranked.some((x)=> tally[x] === 3);
 
-    if(hasThreeOfAKind) {
-        hand.hand = 3;
-        return hand;
-    }
+    hand = findMany(ranked, hand, hole, tally, 2, 1);
 
-    if (hasTwoPair) {
-        hand.hand = 2;
-        return hand;
-    }
+    hand = findTwoPair(ranked, hand, hole, tally);
 
-    if (hasPair) {
-        hand.hand = 1;
-        return hand;
-    }
+    hand = findMany(ranked, hand, hole, tally, 3, 3);
+
     return hand;
 };
+function findTwoPair (ranked, hand, hole, tally) {
+    var has2Pair = ranked.filter((x) => tally[x] === 2).length > 1;
+    if (! has2Pair) {
+        return hand;
+    }
+    ranked.forEach((x) => {
+        if (tally[x] === 2) {
+           hand.hand = 2;
+            if(hole.map((c)=> {return c.rank;}).indexOf(x) != -1) {
+                hand.fromHole = true;
+            }
+        }
+    });
+    return hand;
+}
+
+function findMany (ranked, hand, hole, tally, number, score) {
+    ranked.forEach((x) => {
+        if (tally[x] === number) {
+           hand.hand = score;
+            if(hole.map((c)=> {return c.rank;}).indexOf(x) != -1) {
+                hand.fromHole = true;
+            }
+        }
+    });
+    return hand;
+}
