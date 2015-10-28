@@ -28,6 +28,21 @@ describe("playing highcard greater than 10", function(){
   });
 });
 
+describe("current buy in is greater than 30% of pot", function(){
+  it("does not play on high card", function(done){
+    gameState.current_buy_in = 40;
+    gameState.players[1].stack = 100
+    gameState.players[1].hole_cards = [
+      {"rank": "6","suit": "hearts"},
+      {"rank": "K","suit": "spades"}];
+    player.bet_request(gameState, function(bet){
+      assert.equal(bet, 0);
+      done();
+    });
+  });
+});
+
+
 describe("when I have a pair", function(){
   it("plays a pair", function(done){
     gameState.players[1].hole_cards = [

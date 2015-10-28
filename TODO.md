@@ -1,6 +1,5 @@
 #TODO
 ##Features
-* If matching suits --> raise
 * If pot is low, only play on pair or greater
 * consider the flop --> use ranking api
 * if we are bb --> check fold
@@ -12,3 +11,4 @@
 ##Done
 * If high card of >= 10 play, else fold
 * Exceptions always return 0, not bombing out
+* If matching suits and high card --> raise
