@@ -1,4 +1,5 @@
 const highCards = ['10', 'J', 'Q', 'K', 'A'];
+const pairHighCards = highCards.concat(['8','9']);
 
 module.exports = {
 
@@ -13,13 +14,19 @@ module.exports = {
     var cardValues = cards.map(card => { return card.rank; });
     var hasHighCard = highCards.some((value) => {return cardValues.indexOf(value) > -1});
     var isPair = cardValues[0] === cardValues[1];
+    var isHighPair = isPair &&  pairHighCards.indexOf(cardValues[0]) > -1;
     console.log('has high card: ' + hasHighCard);
+
+    if (isHighPair) {
+      return bet(999999);
+    }
     if (hasHighCard) {
       return bet(current_buy_in);
     }
     if (isPair) {
       return bet(current_buy_in);
     }
+
 
     return bet(0);
   },

@@ -31,12 +31,20 @@ describe("playing highcard greater than 10", function(){
 describe("when I have a pair", function(){
   it("plays a pair", function(done){
     gameState.players[1].hole_cards = [
-      {"rank": "9","suit": "hearts"},
-      {"rank": "9","suit": "spades"}];
+      {"rank": "2","suit": "hearts"},
+      {"rank": "2","suit": "spades"}];
     player.bet_request(gameState, function(bet){
       assert.equal(bet, gameState.current_buy_in);
       done();
     })
   });
-
+  it("plays a high pair all in", function(done){
+    gameState.players[1].hole_cards = [
+      {"rank": "K","suit": "hearts"},
+      {"rank": "K","suit": "spades"}];
+    player.bet_request(gameState, function(bet){
+      assert.equal(bet, 999999);
+      done();
+    })
+  });
 })
