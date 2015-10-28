@@ -26,6 +26,18 @@ describe("playing highcard greater than 10", function(){
       });
     })
   });
+
+  ['Q', 'K', 'A'].forEach((card) => {
+    it(`raise hands with a pair of ${card}s`, function(done) {
+      gameState.players[1].hole_cards = [
+        {"rank": `${card}`, "suit": "hearts"},
+        {"rank": `${card}`, "suit": "spades"}];
+      player.bet_request(gameState, function(bet) {
+        assert.equal(bet, (gameState.minimum_raise * 2));
+        done();
+      });
+    })
+  });
 });
 
 describe("current buy in is greater than 30% of pot", function(){
@@ -55,8 +67,8 @@ describe("when I have a pair", function(){
   });
   it("plays a high pair all in", function(done){
     gameState.players[1].hole_cards = [
-      {"rank": "K","suit": "hearts"},
-      {"rank": "K","suit": "spades"}];
+      {"rank": "J","suit": "hearts"},
+      {"rank": "J","suit": "spades"}];
     player.bet_request(gameState, function(bet){
       assert.equal(bet, 999999);
       done();
@@ -88,6 +100,7 @@ describe("when I have matching suits", function(){
       done();
     })
   });
+
 });
 
 describe('when things break', () => {

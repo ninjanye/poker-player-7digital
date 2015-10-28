@@ -1,5 +1,6 @@
 const highCards = ['10', 'J', 'Q', 'K', 'A'];
 const pairHighCards = highCards.concat(['8','9']);
+const reraiseCards = ['Q', 'K', 'A'];
 
 module.exports = {
 
@@ -17,10 +18,16 @@ module.exports = {
         var hasHighCard = highCards.some((value) => {return cardValues.indexOf(value) > -1});
         var isPair = cardValues[0] === cardValues[1];
         var isHighPair = isPair &&  pairHighCards.indexOf(cardValues[0]) > -1;
+        var isReraise = isPair &&  reraiseCards.indexOf(cardValues[0]) > -1;
         var isSuited = cards[0].suit === cards[1].suit;
         console.log('has high card: ' + hasHighCard);
 
         if (isHighPair) {
+          if (isReraise) {
+            console.log('is reraise: ' + isReraise);
+            console.log('minimum_raise: ' + game_state.minimum_raise);
+            return bet(game_state.minimum_raise * 2)
+          }
           return bet(999999);
         }
         if (isSuited && hasHighCard) {
