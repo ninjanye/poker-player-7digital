@@ -1,3 +1,4 @@
+const highCards = ['10', 'J', 'Q', 'K', 'A'];
 
 module.exports = {
 
@@ -10,12 +11,13 @@ module.exports = {
     var index = game_state.in_action;
     var cards = game_state.players[index].hole_cards;
     var cardValues = cards.map(card => { return card.rank; });
-    console.log(cardValues);
-    if (cardValues.indexOf('10') > -1 ||
-        cardValues.indexOf('J') > -1 ||
-        cardValues.indexOf('Q') > -1 ||
-        cardValues.indexOf('K') > -1 ||
-        cardValues.indexOf('A') > -1) {
+    var hasHighCard = highCards.some((value) => {return cardValues.indexOf(value) > -1});
+    var isPair = cardValues[0] === cardValues[1];
+    console.log('has high card: ' + hasHighCard);
+    if (hasHighCard) {
+      return bet(current_buy_in);
+    }
+    if (isPair) {
       return bet(current_buy_in);
     }
 
