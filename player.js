@@ -3,7 +3,7 @@ const pairHighCards = highCards.concat(['8','9']);
 
 module.exports = {
 
-  VERSION: "Yo yo yo... we win!!!!",
+  VERSION: "the eagle has landed",
 
   bet_request: function(game_state, bet) {
     var current_buy_in = game_state.current_buy_in;
