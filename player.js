@@ -27,15 +27,16 @@ module.exports = {
     }
 
     if (hasHighCard) {
-      console.log('***************');
-      console.log(stack / current_buy_in);
-      if (current_buy_in > (stack * 0.3)) {
+      if ((current_buy_in / stack) > 0.3) {
         return bet(0);
       }
       return bet(current_buy_in);
     }
 
     if (isSuited) {
+      if ((current_buy_in / stack) > 0.3) {
+        return bet(0);
+      }
       return bet(current_buy_in);
     }
 
